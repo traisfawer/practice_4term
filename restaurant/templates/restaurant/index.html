@@ -1,0 +1,310 @@
+{% extends 'restaurant/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<nav class="nav" id="mainNav">
+    <div class="container nav__inner">
+        <ul class="nav__list nav__list--left">
+            <li><a class="nav__link" href="#home">HOME</a></li>
+            <li><a class="nav__link" href="#about">ABOUT</a></li>
+            <li><a class="nav__link" href="#team">TEAM</a></li>
+            <li><a class="nav__link" href="#booking">BOOKING</a></li>
+        </ul>
+
+        <a class="nav__logo" href="#home">
+            <svg class="nav__logo-svg" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"
+                 fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="30" cy="30" r="26"/>
+                <circle cx="30" cy="30" r="4" fill="currentColor"/>
+                <line x1="30" y1="4"  x2="30" y2="56"/>
+                <line x1="4"  y1="30" x2="56" y2="30"/>
+                <line x1="11" y1="11" x2="49" y2="49"/>
+                <line x1="49" y1="11" x2="11" y2="49"/>
+            </svg>
+        </a>
+
+        <ul class="nav__list nav__list--right">
+            <li><a class="nav__link" href="#menu">MENU</a></li>
+            <li><a class="nav__link" href="#gallery">GALERIE</a></li>
+            <li><a class="nav__link" href="#events">EVENTS</a></li>
+            <li><a class="nav__link" href="#contact">CONTACT</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header class="hero" id="home">
+    <div class="hero__lines">
+        <span class="hero__line hero__line--l"></span>
+        <span class="hero__line hero__line--r"></span>
+        <span class="hero__line hero__line--ct"></span>
+        <span class="hero__line hero__line--cb"></span>
+        <span class="hero__line hero__line--tl-h"></span>
+        <span class="hero__line hero__line--tl-v"></span>
+        <span class="hero__line hero__line--tr-h"></span>
+        <span class="hero__line hero__line--tr-v"></span>
+    </div>
+    <p class="hero__schedule">Mon - Fri: 8PM - 10PM, Sat - Sun: 8PM - 3AM</p>
+
+    <div class="hero__content">
+        <p class="hero__subtitle">RESTAURANT</p>
+        <h1 class="hero__title">HUNGRY PEOPLE</h1>
+        <span class="hero__yellow-line"></span>
+        <div class="hero__buttons">
+            <a href="#booking" class="hero__button hero__button--yellow">BOOK TABLE</a>
+            <a href="#about" class="hero__button hero__button--outline">EXPLORE</a>
+        </div>
+    </div>
+
+    <div class="hero__socials">
+        <a class="hero__social" href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a class="hero__social" href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a class="hero__social" href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <a href="#about" class="hero__down"><i class="fas fa-chevron-down"></i></a>
+</header>
+
+<section class="section about" id="about">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="section__title">{{ about.title }}</h2>
+                <span class="section__yellow-line"></span>
+                <p class="section__lead">{{ about.subtitle }}</p>
+                <p class="section__text">{{ about.text }}</p>
+            </div>
+            <div class="col-lg-6">
+                <div class="section__image-block">
+                    {% if about.image %}
+                        <img src="{{ about.image.url }}" alt="About" class="section__image">
+                    {% else %}
+                        <img src="https://picsum.photos/seed/about/700/600" alt="About" class="section__image">
+                    {% endif %}
+                    <span class="section__square"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section team" id="team">
+    <div class="container">
+        <p class="team__caption">Our Team</p>
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-1 order-2">
+                <div class="section__image-block">
+                    {% if team.image %}
+                        <img src="{{ team.image.url }}" alt="Chef" class="section__image">
+                    {% else %}
+                        <img src="https://picsum.photos/seed/team/700/600" alt="Chef" class="section__image">
+                    {% endif %}
+                    <span class="section__square section__square--left"></span>
+                </div>
+            </div>
+            <div class="col-lg-6 order-lg-2 order-1">
+                <h2 class="section__title">{{ team.title }}</h2>
+                <span class="section__yellow-line"></span>
+                <p class="section__lead">{{ team.subtitle }}</p>
+                <p class="section__text">{{ team.text }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section booking" id="booking">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="section__title">Book a Table</h2>
+                <span class="section__yellow-line"></span>
+                <p class="section__lead">Оставьте заявку, мы подтвердим бронь.</p>
+
+                <form class="booking__form" id="bookingForm">
+                    {% csrf_token %}
+                    <input type="text" name="name" class="booking__input" placeholder="Ваше имя" required>
+                    <input type="email" name="email" class="booking__input" placeholder="Email" required>
+                    <input type="tel" name="phone" class="booking__input" placeholder="Телефон" required>
+                    <select name="people" class="booking__input" required>
+                        <option value="" disabled selected>Гостей</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5+</option>
+                    </select>
+                    <input type="date" name="date" class="booking__input" required>
+                    <input type="time" name="time" class="booking__input" required>
+                    <button type="submit" class="booking__button">BOOK NOW</button>
+                    <p class="booking__message" id="bookingMessage"></p>
+                </form>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block">
+                <div class="section__image-block">
+                    <img src="https://picsum.photos/seed/booking/700/700" alt="" class="section__image">
+                    <span class="section__square"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="booking__info">
+        Mon - Fri: <strong>8PM - 10PM</strong>, Sat - Sun: <strong>8PM - 3AM</strong>, Phone: <strong>+7 495 123-45-67</strong>
+    </p>
+</section>
+
+<section class="section specialities" id="specialities">
+    <p class="specialities__caption">Specialities</p>
+    <div class="container">
+        <div class="specialities__slider">
+            {% for item in specialities %}
+            <div class="specialities__slide">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="section__image-block">
+                            {% if item.image %}
+                                <img src="{{ item.image.url }}" alt="{{ item.title }}" class="section__image">
+                            {% else %}
+                                <img src="https://picsum.photos/seed/spec{{ forloop.counter }}/700/600" alt="{{ item.title }}" class="section__image">
+                            {% endif %}
+                            <span class="section__square"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="section__title">{{ item.title }}</h3>
+                        <span class="section__yellow-line"></span>
+                        <p class="section__lead">{{ item.subtitle }}</p>
+                        <p class="section__text">{{ item.text }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section menu" id="menu">
+    <div class="container">
+        <h2 class="section__title text-center">Delicious Menu</h2>
+        <span class="section__yellow-line section__yellow-line--center"></span>
+
+        <div class="menu__filters">
+            <button class="menu__filter menu__filter--active" data-cat="all">All</button>
+            {% for value, label in menu_categories %}
+                <button class="menu__filter" data-cat="{{ value }}">{{ label }}</button>
+            {% endfor %}
+        </div>
+
+        <div class="row menu__list" id="menuList">
+            {% for item in menu_items %}
+            <div class="col-md-6 col-lg-4 menu__item" data-category="{{ item.category }}">
+                <div class="menu__card">
+                    <p class="menu__title">
+                        <span>{{ item.title }}</span>
+                        <span class="menu__dots"></span>
+                        <span class="menu__price">${{ item.price }}</span>
+                    </p>
+                    <p class="menu__subtitle">{{ item.subtitle }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section gallery" id="gallery">
+    <div class="container">
+        <h2 class="section__title text-center">Galerie</h2>
+        <span class="section__yellow-line section__yellow-line--center"></span>
+        <div class="gallery__grid">
+            <a class="gallery__item" href="https://picsum.photos/seed/gal1/1200/900" target="_blank">
+                <img src="https://picsum.photos/seed/gal1/600/500" alt="">
+            </a>
+            <a class="gallery__item" href="https://picsum.photos/seed/gal2/1200/900" target="_blank">
+                <img src="https://picsum.photos/seed/gal2/600/500" alt="">
+            </a>
+            <a class="gallery__item" href="https://picsum.photos/seed/gal3/1200/900" target="_blank">
+                <img src="https://picsum.photos/seed/gal3/600/500" alt="">
+            </a>
+            <a class="gallery__item" href="https://picsum.photos/seed/gal4/1200/900" target="_blank">
+                <img src="https://picsum.photos/seed/gal4/600/500" alt="">
+            </a>
+            <a class="gallery__item" href="https://picsum.photos/seed/gal5/1200/900" target="_blank">
+                <img src="https://picsum.photos/seed/gal5/600/500" alt="">
+            </a>
+            <a class="gallery__item" href="https://picsum.photos/seed/gal6/1200/900" target="_blank">
+                <img src="https://picsum.photos/seed/gal6/600/500" alt="">
+            </a>
+            <a class="gallery__item" href="https://picsum.photos/seed/gal7/1200/900" target="_blank">
+                <img src="https://picsum.photos/seed/gal7/600/500" alt="">
+            </a>
+            <a class="gallery__item" href="https://picsum.photos/seed/gal8/1200/900" target="_blank">
+                <img src="https://picsum.photos/seed/gal8/600/500" alt="">
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section events" id="events">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="section__image-block">
+                    {% if events.image %}
+                        <img src="{{ events.image.url }}" alt="Events" class="section__image">
+                    {% else %}
+                        <img src="https://picsum.photos/seed/events/700/600" alt="Events" class="section__image">
+                    {% endif %}
+                    <span class="section__square section__square--left"></span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="section__title">{{ events.title }}</h2>
+                <span class="section__yellow-line"></span>
+                <p class="section__lead">{{ events.subtitle }}</p>
+                <p class="section__text">{{ events.text }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section contact" id="contact">
+    <div class="container text-center">
+        <h2 class="section__title">Contact</h2>
+        <span class="section__yellow-line section__yellow-line--center"></span>
+        <p class="section__lead">Мы всегда рады гостям.</p>
+
+        <div class="contact__grid">
+            <div class="contact__card">
+                <i class="fas fa-map-marker-alt contact__icon"></i>
+                <p class="contact__label">Адрес</p>
+                <p class="contact__value">Ул. Ресторанная, 10, Москва</p>
+            </div>
+            <div class="contact__card">
+                <i class="fas fa-phone contact__icon"></i>
+                <p class="contact__label">Телефон</p>
+                <p class="contact__value">+7 495 123-45-67</p>
+            </div>
+            <div class="contact__card">
+                <i class="fas fa-envelope contact__icon"></i>
+                <p class="contact__label">Email</p>
+                <p class="contact__value">hello@hungry.local</p>
+            </div>
+        </div>
+
+        <a href="#booking" class="hero__button hero__button--yellow contact__cta">BOOK A TABLE</a>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container footer__inner">
+        <p class="footer__brand">HUNGRY PEOPLE</p>
+        <p class="footer__copy">© 2026</p>
+        <div class="footer__socials">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+</footer>
+
+{% endblock %}
