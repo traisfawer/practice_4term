@@ -93,4 +93,19 @@ $(function () {
         $(visible).show();
     });
 
+    if (typeof ymaps !== 'undefined' && $('#map').length) {
+        ymaps.ready(function () {
+            var map = new ymaps.Map('map', {
+                center: [55.751574, 37.573856],
+                zoom: 15,
+                controls: ['zoomControl']
+            });
+            map.geoObjects.add(new ymaps.Placemark([55.751574, 37.573856], {
+                balloonContent: 'Hungry People'
+            }, {
+                preset: 'islands#yellowFoodIcon'
+            }));
+        });
+    }
+
 });
