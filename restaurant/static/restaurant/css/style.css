@@ -409,6 +409,19 @@ button { font-family: inherit; cursor: pointer; }
     margin: 0;
 }
 .contact__cta { margin-top: 20px; }
+.contact__form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+.contact__form .booking__input { text-align: left; }
+.contact__textarea {
+    grid-column: 1 / -1;
+    resize: vertical;
+    font-family: inherit;
+}
 
 /* footer */
 .footer {

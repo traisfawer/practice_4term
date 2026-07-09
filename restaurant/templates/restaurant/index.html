@@ -268,10 +268,10 @@
 </section>
 
 <section class="section contact" id="contact">
-    <div class="container text-center">
-        <h2 class="section__title">Contact</h2>
+    <div class="container">
+        <h2 class="section__title text-center">Contact</h2>
         <span class="section__yellow-line section__yellow-line--center"></span>
-        <p class="section__lead">Мы всегда рады гостям.</p>
+        <p class="section__lead text-center">Мы всегда рады гостям.</p>
 
         <div class="contact__grid">
             <div class="contact__card">
@@ -291,7 +291,15 @@
             </div>
         </div>
 
-        <a href="#booking" class="hero__button hero__button--yellow contact__cta">BOOK A TABLE</a>
+        <form class="contact__form" id="contactForm">
+            {% csrf_token %}
+            <input type="text" name="name" class="booking__input" placeholder="Ваше имя" required>
+            <input type="email" name="email" class="booking__input" placeholder="Email" required>
+            <input type="tel" name="phone" class="booking__input" placeholder="Телефон">
+            <textarea name="message" class="booking__input contact__textarea" placeholder="Сообщение" rows="4" required></textarea>
+            <button type="submit" class="booking__button">SEND MESSAGE</button>
+            <p class="booking__message" id="contactMessage"></p>
+        </form>
     </div>
 </section>
 

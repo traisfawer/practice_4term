@@ -53,6 +53,30 @@ $(function () {
         });
     });
 
+    $('#contactForm').on('submit', function (e) {
+        e.preventDefault();
+        var form = $(this);
+        var msg = $('#contactMessage');
+        msg.removeClass('is-ok is-error').text('Отправка...');
+
+        $.ajax({
+            url: '/api/contact/',
+            method: 'POST',
+            data: form.serialize(),
+            success: function (data) {
+                if (data.ok) {
+                    msg.addClass('is-ok').text('Сообщение отправлено, спасибо!');
+                    form[0].reset();
+                } else {
+                    msg.addClass('is-error').text('Проверьте поля');
+                }
+            },
+            error: function () {
+                msg.addClass('is-error').text('Ошибка отправки');
+            }
+        });
+    });
+
     var items = $('#menuList .menu__item');
 
     $('.menu__filter').on('click', function () {

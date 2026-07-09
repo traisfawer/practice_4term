@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_POST
 
-from .forms import BookingForm
+from .forms import BookingForm, ContactForm
 from .models import MenuItem, Speciality, StaticSection
 
 
@@ -40,3 +40,13 @@ def booking_create(request):
               fail_silently=True)
 
     return JsonResponse({'ok': True, 'id': booking.id})
+
+
+@require_POST
+def contact_create(request):
+    form = ContactForm(request.POST)
+    if not form.is_valid():
+        return JsonResponse({'ok': False, 'errors': form.errors}, status=400)
+
+    msg = form.save()
+    return JsonResponse({'ok': True, 'id': msg.id})
