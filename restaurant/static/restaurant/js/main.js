@@ -93,6 +93,72 @@ $(function () {
         $(visible).show();
     });
 
+    $('.auth__tab').on('click', function () {
+        var tab = $(this).data('tab');
+        $('.auth__tab').removeClass('auth__tab--active');
+        $(this).addClass('auth__tab--active');
+        if (tab === 'login') {
+            $('#loginForm').show();
+            $('#registerForm').hide();
+        } else {
+            $('#loginForm').hide();
+            $('#registerForm').show();
+        }
+    });
+
+    $('#loginForm').on('submit', function (e) {
+        e.preventDefault();
+        var form = $(this);
+        var msg = $('#loginMessage');
+        msg.removeClass('is-ok is-error').text('Отправка...');
+
+        $.ajax({
+            url: '/api/login/',
+            method: 'POST',
+            data: form.serialize(),
+            success: function () {
+                msg.addClass('is-ok').text('Вход выполнен');
+                setTimeout(function () { location.reload(); }, 600);
+            },
+            error: function (xhr) {
+                var err = (xhr.responseJSON && xhr.responseJSON.error) || 'Ошибка входа';
+                msg.addClass('is-error').text(err);
+            }
+        });
+    });
+
+    $('#registerForm').on('submit', function (e) {
+        e.preventDefault();
+        var form = $(this);
+        var msg = $('#registerMessage');
+        msg.removeClass('is-ok is-error').text('Отправка...');
+
+        $.ajax({
+            url: '/api/register/',
+            method: 'POST',
+            data: form.serialize(),
+            success: function () {
+                msg.addClass('is-ok').text('Регистрация успешна');
+                setTimeout(function () { location.reload(); }, 600);
+            },
+            error: function (xhr) {
+                var err = (xhr.responseJSON && xhr.responseJSON.error) || 'Ошибка регистрации';
+                msg.addClass('is-error').text(err);
+            }
+        });
+    });
+
+    $('#logoutLink').on('click', function (e) {
+        e.preventDefault();
+        var token = $('input[name=csrfmiddlewaretoken]').first().val();
+        $.ajax({
+            url: '/api/logout/',
+            method: 'POST',
+            data: { csrfmiddlewaretoken: token },
+            complete: function () { location.reload(); }
+        });
+    });
+
     if (typeof ymaps !== 'undefined' && $('#map').length) {
         ymaps.ready(function () {
             var map = new ymaps.Map('map', {

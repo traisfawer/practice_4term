@@ -429,6 +429,41 @@ button { font-family: inherit; cursor: pointer; }
     border: 1px solid #ece5d6;
 }
 
+/* auth */
+.nav__auth {
+    color: #f5c518 !important;
+    letter-spacing: 3px;
+}
+.auth {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 0;
+}
+.auth__tabs {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #ece5d6;
+}
+.auth__tab {
+    border: none;
+    background: transparent;
+    font-family: 'Tenor Sans', serif;
+    letter-spacing: 3px;
+    padding: 10px 4px;
+    color: #8a8a8a;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+}
+.auth__tab--active {
+    color: #1c1c1c;
+    border-bottom-color: #f5c518;
+}
+.auth__form {
+    display: grid;
+    gap: 14px;
+}
+
 /* footer */
 .footer {
     background: #1c1c1c;

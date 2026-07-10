@@ -29,6 +29,13 @@
             <li><a class="nav__link" href="#gallery">GALERIE</a></li>
             <li><a class="nav__link" href="#events">EVENTS</a></li>
             <li><a class="nav__link" href="#contact">CONTACT</a></li>
+            <li>
+                {% if user.is_authenticated %}
+                    <a class="nav__link nav__auth" href="#" id="logoutLink">LOGOUT</a>
+                {% else %}
+                    <a class="nav__link nav__auth" href="#" data-toggle="modal" data-target="#authModal">SIGN IN</a>
+                {% endif %}
+            </li>
         </ul>
     </div>
 </nav>
@@ -304,6 +311,33 @@
         <div id="map" class="contact__map"></div>
     </div>
 </section>
+
+<div class="modal fade" id="authModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content auth">
+            <div class="auth__tabs">
+                <button type="button" class="auth__tab auth__tab--active" data-tab="login">Sign In</button>
+                <button type="button" class="auth__tab" data-tab="register">Sign Up</button>
+            </div>
+
+            <form class="auth__form" id="loginForm">
+                {% csrf_token %}
+                <input type="email" name="email" class="booking__input" placeholder="Email" required>
+                <input type="password" name="password" class="booking__input" placeholder="Пароль" required>
+                <button type="submit" class="booking__button">SIGN IN</button>
+                <p class="booking__message" id="loginMessage"></p>
+            </form>
+
+            <form class="auth__form" id="registerForm" style="display:none;">
+                {% csrf_token %}
+                <input type="email" name="email" class="booking__input" placeholder="Email" required>
+                <input type="password" name="password" class="booking__input" placeholder="Пароль (мин. 6 символов)" required>
+                <button type="submit" class="booking__button">SIGN UP</button>
+                <p class="booking__message" id="registerMessage"></p>
+            </form>
+        </div>
+    </div>
+</div>
 
 <footer class="footer">
     <div class="container footer__inner">
