@@ -298,18 +298,26 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* specialities */
-.specialities { background: #f5f1eb; }
+.specialities {
+    color: #fff;
+    background:
+        linear-gradient(rgba(20,20,20,.75), rgba(20,20,20,.75)),
+        url('/static/restaurant/img/specialities-bg.jpg') center/cover no-repeat;
+}
+.specialities .section__title { color: #fff; }
+.specialities .section__lead { color: #fff; }
+.specialities .section__text { color: #cfcfcf; }
 .specialities__caption {
     font-family: 'Tenor Sans', serif;
     text-align: center;
     letter-spacing: 10px;
-    color: #1c1c1c;
+    color: #fff;
     font-size: clamp(28px, 3vw, 40px);
     margin-bottom: 50px;
 }
 .specialities__slide { padding: 20px; outline: none; }
-.slick-dots li button:before { color: #1c1c1c; font-size: 10px; }
-.slick-dots li.slick-active button:before { color: #f5c518; }
+.slick-dots li button:before { color: #fff; font-size: 10px; opacity: .5; }
+.slick-dots li.slick-active button:before { color: #f5c518; opacity: 1; }
 
 /* menu */
 .menu { background: #fff; }
