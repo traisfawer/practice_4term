@@ -337,6 +337,7 @@
                 <input type="email" name="email" class="booking__input" placeholder="Email" required>
                 <input type="password" name="password" class="booking__input" placeholder="Пароль" required>
                 <button type="submit" class="booking__button">SIGN IN</button>
+                <p class="auth__hint"><a href="#" class="auth__link" id="forgotLink">Забыли пароль?</a></p>
                 <p class="booking__message" id="loginMessage"></p>
             </form>
 
@@ -346,6 +347,14 @@
                 <input type="password" name="password" class="booking__input" placeholder="Пароль (мин. 6 символов)" required>
                 <button type="submit" class="booking__button">SIGN UP</button>
                 <p class="booking__message" id="registerMessage"></p>
+            </form>
+
+            <form class="auth__form" id="resetForm" style="display:none;">
+                {% csrf_token %}
+                <input type="email" name="email" class="booking__input" placeholder="Email" required>
+                <button type="submit" class="booking__button">SEND RESET LINK</button>
+                <p class="auth__hint"><a href="#" class="auth__link" id="backToLoginLink">← Назад к входу</a></p>
+                <p class="booking__message" id="resetMessage"></p>
             </form>
         </div>
     </div>

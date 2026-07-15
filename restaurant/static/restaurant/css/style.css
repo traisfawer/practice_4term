@@ -463,6 +463,20 @@ button { font-family: inherit; cursor: pointer; }
     display: grid;
     gap: 14px;
 }
+.auth__hint {
+    text-align: right;
+    margin: 4px 0 0;
+    font-size: 12px;
+}
+.auth__link {
+    color: #8a8a8a;
+    text-decoration: none;
+    border-bottom: 1px dashed #c7bfb1;
+}
+.auth__link:hover {
+    color: #f5c518;
+    border-bottom-color: #f5c518;
+}
 
 /* footer */
 .footer {

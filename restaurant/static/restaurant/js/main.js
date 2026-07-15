@@ -93,17 +93,53 @@ $(function () {
         $(visible).show();
     });
 
-    $('.auth__tab').on('click', function () {
-        var tab = $(this).data('tab');
+    function showAuthTab(tab) {
         $('.auth__tab').removeClass('auth__tab--active');
-        $(this).addClass('auth__tab--active');
+        $('#loginForm, #registerForm, #resetForm').hide();
         if (tab === 'login') {
+            $('.auth__tab[data-tab="login"]').addClass('auth__tab--active');
             $('#loginForm').show();
-            $('#registerForm').hide();
-        } else {
-            $('#loginForm').hide();
+        } else if (tab === 'register') {
+            $('.auth__tab[data-tab="register"]').addClass('auth__tab--active');
             $('#registerForm').show();
+        } else {
+            $('#resetForm').show();
         }
+    }
+
+    $('.auth__tab').on('click', function () {
+        showAuthTab($(this).data('tab'));
+    });
+
+    $('#forgotLink').on('click', function (e) {
+        e.preventDefault();
+        showAuthTab('reset');
+    });
+
+    $('#backToLoginLink').on('click', function (e) {
+        e.preventDefault();
+        showAuthTab('login');
+    });
+
+    $('#resetForm').on('submit', function (e) {
+        e.preventDefault();
+        var form = $(this);
+        var msg = $('#resetMessage');
+        msg.removeClass('is-ok is-error').text('Отправка...');
+
+        $.ajax({
+            url: '/api/reset/',
+            method: 'POST',
+            data: form.serialize(),
+            success: function () {
+                msg.addClass('is-ok').text('Если email зарегистрирован, ссылка отправлена на почту.');
+                form[0].reset();
+            },
+            error: function (xhr) {
+                var err = (xhr.responseJSON && xhr.responseJSON.error) || 'Ошибка';
+                msg.addClass('is-error').text(err);
+            }
+        });
     });
 
     $('#loginForm').on('submit', function (e) {
