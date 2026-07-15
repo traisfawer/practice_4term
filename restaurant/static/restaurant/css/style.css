@@ -205,6 +205,10 @@ button { font-family: inherit; cursor: pointer; }
     width: 100%;
     object-fit: cover;
     max-height: 520px;
+    transition: transform .5s ease;
+}
+.section__image-block:hover .section__image {
+    transform: scale(1.1);
 }
 .section__square {
     position: absolute;
@@ -287,14 +291,6 @@ button { font-family: inherit; cursor: pointer; }
     margin-bottom: 50px;
 }
 .specialities__slide { padding: 20px; outline: none; }
-.specialities .section__image {
-    transition: transform .5s ease;
-    transform-origin: center;
-}
-.specialities .section__image-block:hover .section__image {
-    transform: scale(1.15);
-    z-index: 10;
-}
 .slick-dots li button:before { color: #1c1c1c; font-size: 10px; }
 .slick-dots li.slick-active button:before { color: #f5c518; }
 
