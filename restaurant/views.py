@@ -42,7 +42,7 @@ def booking_create(request):
         booking.date, booking.time,
     )
     send_mail('Booking #%d' % booking.id, text,
-              'noreply@hungry.local', [booking.email],
+              None, [booking.email],
               fail_silently=True)
 
     return JsonResponse({'ok': True, 'id': booking.id})
@@ -60,7 +60,7 @@ def contact_create(request):
         msg.name, msg.email, msg.phone or '-', msg.message,
     )
     send_mail('Contact message #%d' % msg.id, text,
-              'noreply@hungry.local', ['office@hungry.local'],
+              None, ['modnaya.shurka@gmail.com'],
               fail_silently=True)
 
     return JsonResponse({'ok': True, 'id': msg.id})
@@ -121,7 +121,7 @@ def password_reset_request(request):
     send_mail(
         'Восстановление пароля',
         'Для сброса пароля перейдите по ссылке:\n\n' + link,
-        'noreply@hungry.local',
+        None,
         [user.email],
         fail_silently=True,
     )
