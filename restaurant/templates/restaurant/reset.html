@@ -1,0 +1,26 @@
+{% extends 'restaurant/base.html' %}
+
+{% block content %}
+<section class="section" style="padding-top: 160px; min-height: 100vh;">
+    <div class="container" style="max-width: 500px;">
+        {% if done %}
+            <h2 class="section__title text-center">Пароль изменён</h2>
+            <span class="section__yellow-line section__yellow-line--center"></span>
+            <p class="text-center"><a href="/">← На главную</a></p>
+        {% elif invalid %}
+            <h2 class="section__title text-center">Ссылка недействительна</h2>
+            <span class="section__yellow-line section__yellow-line--center"></span>
+            <p class="text-center">Возможно, срок действия истёк. <a href="/">На главную</a></p>
+        {% else %}
+            <h2 class="section__title text-center">Новый пароль</h2>
+            <span class="section__yellow-line section__yellow-line--center"></span>
+            <form method="post" class="auth__form" style="max-width: 400px; margin: 0 auto;">
+                {% csrf_token %}
+                <input type="password" name="password" class="booking__input" placeholder="Новый пароль (мин. 6 символов)" required>
+                <button type="submit" class="booking__button">СМЕНИТЬ ПАРОЛЬ</button>
+                {% if error %}<p class="booking__message is-error">{{ error }}</p>{% endif %}
+            </form>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
