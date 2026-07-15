@@ -59,15 +59,13 @@ button { font-family: inherit; cursor: pointer; }
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 82px; height: 82px;
-    border-radius: 50%;
-    background: #f5c518;
-    color: #1c1c1c;
+    width: 120px; height: 120px;
     transition: width .3s, height .3s;
     flex-shrink: 0;
 }
 .nav__logo-svg { width: 60%; height: 60%; }
-.nav.is-sticky .nav__logo { width: 46px; height: 46px; }
+.nav__logo-img { width: 100%; height: 100%; object-fit: contain; }
+.nav.is-sticky .nav__logo { width: 70px; height: 70px; }
 
 /* hero */
 .hero {
@@ -98,7 +96,7 @@ button { font-family: inherit; cursor: pointer; }
 
 .hero__schedule {
     position: absolute;
-    top: 120px;
+    top: 180px;
     font-size: 12px;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -530,7 +528,7 @@ button { font-family: inherit; cursor: pointer; }
 @media (max-width: 576px) {
     .booking__form { grid-template-columns: 1fr; }
     .hero__title { letter-spacing: 4px; }
-    .hero__schedule { top: 90px; font-size: 10px; letter-spacing: 2px; }
+    .hero__schedule { top: 140px; font-size: 10px; letter-spacing: 2px; }
     .hero__line--tl-h,
     .hero__line--tl-v,
     .hero__line--tr-h,
