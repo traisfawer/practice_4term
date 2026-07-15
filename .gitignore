@@ -6,3 +6,4 @@ venv/
 media/
 .idea/
 .vscode/
+db_report.html
