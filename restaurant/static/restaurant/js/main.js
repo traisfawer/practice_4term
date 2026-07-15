@@ -24,9 +24,11 @@ $(function () {
         arrows: false,
         dots: true,
         infinite: true,
-        speed: 500,
+        speed: 700,
         fade: true,
-        autoplay: false
+        autoplay: true,
+        autoplaySpeed: 4000,
+        pauseOnHover: true
     });
 
     $('#bookingForm').on('submit', function (e) {
@@ -41,14 +43,14 @@ $(function () {
             data: form.serialize(),
             success: function (data) {
                 if (data.ok) {
-                    msg.addClass('is-ok').text('Спасибо! Бронь #' + data.id);
+                    msg.addClass('is-ok').text('Data added successfully !');
                     form[0].reset();
                 } else {
-                    msg.addClass('is-error').text('Проверьте поля');
+                    msg.addClass('is-error').text('Please check the form fields');
                 }
             },
             error: function () {
-                msg.addClass('is-error').text('Ошибка отправки');
+                msg.addClass('is-error').text('Sending failed');
             }
         });
     });

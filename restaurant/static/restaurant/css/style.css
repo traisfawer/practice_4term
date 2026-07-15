@@ -270,8 +270,25 @@ button { font-family: inherit; cursor: pointer; }
     margin: 8px 0 0;
     font-size: 14px;
 }
-.booking__message.is-ok { color: #2f7d32; }
-.booking__message.is-error { color: #c1272d; }
+.booking__message.is-ok,
+.booking__message.is-error {
+    padding: 14px 18px;
+    border-radius: 4px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    text-align: left;
+    margin-top: 14px;
+}
+.booking__message.is-ok {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.booking__message.is-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
 .booking__info {
     text-align: center;
     letter-spacing: 2px;
