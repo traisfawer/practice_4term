@@ -200,13 +200,23 @@ $(function () {
             var map = new ymaps.Map('map', {
                 center: [55.751574, 37.573856],
                 zoom: 15,
-                controls: ['zoomControl']
+                controls: ['zoomControl', 'routeButtonControl', 'typeSelector', 'fullscreenControl']
             });
             map.geoObjects.add(new ymaps.Placemark([55.751574, 37.573856], {
-                balloonContent: 'Hungry People'
+                balloonContent: 'Hungry People',
+                hintContent: 'Наш ресторан'
             }, {
                 preset: 'islands#yellowFoodIcon'
             }));
+
+            var routeBtn = map.controls.get('routeButtonControl');
+            if (routeBtn) {
+                routeBtn.routePanel.state.set({
+                    type: 'auto',
+                    toEnabled: false,
+                    to: 'Москва, ул. Ресторанная, 10'
+                });
+            }
         });
     }
 
