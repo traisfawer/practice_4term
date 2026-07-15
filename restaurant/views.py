@@ -51,6 +51,14 @@ def contact_create(request):
         return JsonResponse({'ok': False, 'errors': form.errors}, status=400)
 
     msg = form.save()
+
+    text = 'From: %s <%s>\nPhone: %s\n\n%s' % (
+        msg.name, msg.email, msg.phone or '-', msg.message,
+    )
+    send_mail('Contact message #%d' % msg.id, text,
+              'noreply@hungry.local', ['office@hungry.local'],
+              fail_silently=True)
+
     return JsonResponse({'ok': True, 'id': msg.id})
 
 
