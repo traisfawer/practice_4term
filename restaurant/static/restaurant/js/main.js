@@ -24,11 +24,12 @@ $(function () {
         arrows: false,
         dots: true,
         infinite: true,
-        speed: 700,
-        fade: true,
+        speed: 600,
         autoplay: true,
-        autoplaySpeed: 4000,
-        pauseOnHover: true
+        autoplaySpeed: 3500,
+        pauseOnHover: false,
+        pauseOnFocus: false,
+        cssEase: 'ease-in-out'
     });
 
     $('#bookingForm').on('submit', function (e) {
