@@ -75,7 +75,7 @@ button { font-family: inherit; cursor: pointer; }
     color: #fff;
     background:
         linear-gradient(rgba(20,20,20,.55), rgba(20,20,20,.75)),
-        url('https://picsum.photos/seed/hero/1920/1080') center/cover no-repeat;
+        url('/static/restaurant/img/hero.jpg') center/cover no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -369,7 +369,7 @@ button { font-family: inherit; cursor: pointer; }
     color: #fff;
     background:
         linear-gradient(rgba(20,20,20,.75), rgba(20,20,20,.75)),
-        url('https://picsum.photos/seed/events-bg/1920/1080') center/cover no-repeat;
+        url('/static/restaurant/img/events.jpg') center/cover no-repeat;
 }
 .events .section__title { color: #fff; }
 .events .section__lead { color: #fff; }

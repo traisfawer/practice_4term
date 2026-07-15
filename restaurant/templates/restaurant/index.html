@@ -78,7 +78,7 @@
                     {% if about.image %}
                         <img src="{{ about.image.url }}" alt="About" class="section__image">
                     {% else %}
-                        <img src="https://picsum.photos/seed/about/700/600" alt="About" class="section__image">
+                        <img src="{% static 'restaurant/img/about.jpg' %}" alt="About" class="section__image">
                     {% endif %}
                     <span class="section__square"></span>
                 </div>
@@ -96,7 +96,7 @@
                     {% if team.image %}
                         <img src="{{ team.image.url }}" alt="Chef" class="section__image">
                     {% else %}
-                        <img src="https://picsum.photos/seed/team/700/600" alt="Chef" class="section__image">
+                        <img src="{% static 'restaurant/img/team.jpg' %}" alt="Chef" class="section__image">
                     {% endif %}
                     <span class="section__square section__square--left"></span>
                 </div>
@@ -140,7 +140,7 @@
             </div>
             <div class="col-lg-6 d-none d-lg-block">
                 <div class="section__image-block">
-                    <img src="https://picsum.photos/seed/booking/700/700" alt="" class="section__image">
+                    <img src="{% static 'restaurant/img/booking.jpg' %}" alt="Booking" class="section__image">
                     <span class="section__square"></span>
                 </div>
             </div>
@@ -163,7 +163,7 @@
                             {% if item.image %}
                                 <img src="{{ item.image.url }}" alt="{{ item.title }}" class="section__image">
                             {% else %}
-                                <img src="https://picsum.photos/seed/spec{{ forloop.counter }}/700/600" alt="{{ item.title }}" class="section__image">
+                                <img src="{% static 'restaurant/img/' %}spec{{ forloop.counter }}.jpg" alt="{{ item.title }}" class="section__image">
                             {% endif %}
                             <span class="section__square"></span>
                         </div>
@@ -215,29 +215,29 @@
         <h2 class="section__title text-center">Gallery</h2>
         <span class="section__yellow-line section__yellow-line--center"></span>
         <div class="gallery__grid">
-            <a class="gallery__item" href="https://picsum.photos/seed/gal1/1200/900" target="_blank">
-                <img src="https://picsum.photos/seed/gal1/600/500" alt="">
+            <a class="gallery__item" href="{% static "restaurant/img/gal1.jpg" %}" target="_blank">
+                <img src="{% static "restaurant/img/gal1.jpg" %}" alt="">
             </a>
-            <a class="gallery__item" href="https://picsum.photos/seed/gal2/1200/900" target="_blank">
-                <img src="https://picsum.photos/seed/gal2/600/500" alt="">
+            <a class="gallery__item" href="{% static "restaurant/img/gal2.jpg" %}" target="_blank">
+                <img src="{% static "restaurant/img/gal2.jpg" %}" alt="">
             </a>
-            <a class="gallery__item" href="https://picsum.photos/seed/gal3/1200/900" target="_blank">
-                <img src="https://picsum.photos/seed/gal3/600/500" alt="">
+            <a class="gallery__item" href="{% static "restaurant/img/gal3.jpg" %}" target="_blank">
+                <img src="{% static "restaurant/img/gal3.jpg" %}" alt="">
             </a>
-            <a class="gallery__item" href="https://picsum.photos/seed/gal4/1200/900" target="_blank">
-                <img src="https://picsum.photos/seed/gal4/600/500" alt="">
+            <a class="gallery__item" href="{% static "restaurant/img/gal4.jpg" %}" target="_blank">
+                <img src="{% static "restaurant/img/gal4.jpg" %}" alt="">
             </a>
-            <a class="gallery__item" href="https://picsum.photos/seed/gal5/1200/900" target="_blank">
-                <img src="https://picsum.photos/seed/gal5/600/500" alt="">
+            <a class="gallery__item" href="{% static "restaurant/img/gal5.jpg" %}" target="_blank">
+                <img src="{% static "restaurant/img/gal5.jpg" %}" alt="">
             </a>
-            <a class="gallery__item" href="https://picsum.photos/seed/gal6/1200/900" target="_blank">
-                <img src="https://picsum.photos/seed/gal6/600/500" alt="">
+            <a class="gallery__item" href="{% static "restaurant/img/gal6.jpg" %}" target="_blank">
+                <img src="{% static "restaurant/img/gal6.jpg" %}" alt="">
             </a>
-            <a class="gallery__item" href="https://picsum.photos/seed/gal7/1200/900" target="_blank">
-                <img src="https://picsum.photos/seed/gal7/600/500" alt="">
+            <a class="gallery__item" href="{% static "restaurant/img/gal7.jpg" %}" target="_blank">
+                <img src="{% static "restaurant/img/gal7.jpg" %}" alt="">
             </a>
-            <a class="gallery__item" href="https://picsum.photos/seed/gal8/1200/900" target="_blank">
-                <img src="https://picsum.photos/seed/gal8/600/500" alt="">
+            <a class="gallery__item" href="{% static "restaurant/img/gal8.jpg" %}" target="_blank">
+                <img src="{% static "restaurant/img/gal8.jpg" %}" alt="">
             </a>
         </div>
     </div>
@@ -251,7 +251,7 @@
                     {% if events.image %}
                         <img src="{{ events.image.url }}" alt="Events" class="section__image">
                     {% else %}
-                        <img src="https://picsum.photos/seed/events/700/600" alt="Events" class="section__image">
+                        <img src="{% static 'restaurant/img/events.jpg' %}" alt="Events" class="section__image">
                     {% endif %}
                     <span class="section__square section__square--left"></span>
                 </div>
